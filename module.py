@@ -1,35 +1,28 @@
 import requests
 import urllib.request
-import time
 import csv
 from helpers import print_to_txt
 from helpers import print_to_csv
 from helpers import init_csv
 from bs4 import BeautifulSoup
 
-init_csv()
-
 results_list = []
 dealers = []
 
-# bs4 had an issue when loading from file
-# with open('dealers.txt') as dealer_file:
-#    for line in dealer_file:
-#        dealers.append(line) 
+def import_dealers():
+    with open('dealers.txt') as dealer_file:
+        for line in dealer_file:
+            stripped = line.replace("\n","")
+            dealers.append(stripped) 
 
-dealers.append("https://southsidetoyota.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
-dealers.append("https://scifleettoyota.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
-dealers.append("https://torquetoyota.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
-dealers.append("https://oldmactoyotaspringwood.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
-dealers.append("https://downtowntoyota.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
-dealers.append("https://motoramatoyota.dealer.toyota.com.au/new-vehicles/prado/gxl/diesel")
+init_csv()
+import_dealers()
 
 i = 0
 while i < len(dealers):
         dealer_name = dealers[i].split(".")
         dealer_name = dealers[i].replace("https://", "")
-        dealer_name = dealer_name.split(".")
-        dealer_name = dealer_name[0]
+        dealer_name = dealer_name.split(".")[0]
 
         print("Started dealer: " + dealer_name)
         url = dealers[i]  

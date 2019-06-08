@@ -1,4 +1,5 @@
 file = open("cars.txt", "w")
+dealers = []
 
 def print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin):
         file.write(dealer_name + " " + str(price) + str(title) + "Colour: " + str(colour) + " Options:  " + str(options) + "Transmission:" + str(transmission) + " Engine:" + str(engine) + "Interior: " + str(interior) + " " + str(vin) + "\n")   
@@ -18,3 +19,9 @@ def init_csv():
         f.write("dealer_name, price, title, colour, options, transmission, engine, interior, vin")
         f.write("\n")
         f.close()
+
+def import_dealers():
+    with open('dealers.txt') as dealer_file:
+        for line in dealer_file:
+            stripped = line.replace("\n","")
+            dealers.append(stripped) 
