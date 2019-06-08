@@ -4,19 +4,28 @@ import time
 import csv
 from bs4 import BeautifulSoup
 
-def print_to_txt(dealer_name, price, title, transmission, engine, interior, vin):
-        file.write(dealer_name + " " + str(price) + str(title) + " Transmission:" + str(transmission) + " Engine:" + str(engine) + "Interior: " + str(interior) + " " + str(vin) + "\n")   
+def print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin):
+        file.write(dealer_name + " " + str(price) + str(title) + "Colour: " + str(colour) + " Options:  " + str(options) + "Transmission:" + str(transmission) + " Engine:" + str(engine) + "Interior: " + str(interior) + " " + str(vin) + "\n")   
 
-def print_to_csv(dealer_name, price, title, transmission, engine, interior, vin):
+def print_to_csv(dealer_name, price, title, colour, options, transmission, engine, interior, vin):
                 
-        r = [dealer_name, price, title, transmission, engine, interior, vin]        
+        r = [dealer_name, price, title, colour, options, transmission, engine, interior, vin]        
         row = ",".join(r)
 
         with open("cars.csv", "a") as file:
                 file.write(row)
                 file.write("\n")
 
+def init_csv():
+        f = open("cars.csv", "w")
+        f.truncate()
+        f.write("dealer_name, price, title, colour, options, transmission, engine, interior, vin")
+        f.write("\n")
+        f.close()
+
 file = open("cars.txt", "w")
+
+init_csv()
 
 results_list = []
 dealers = []
@@ -61,18 +70,26 @@ while i < len(dealers):
                         vin = item.find("p", {"class": "inventory--detail__vin"})                       
                         transmission = item.find("ul", {"class": "reset reset--all"}).find_all("li")[0].get_text()
                         engine = item.find("ul", {"class": "reset reset--all"}).find_all("li")[1].get_text()
-                        interior = item.find("ul", {"class": "reset reset--all"}).find_all("li")[2].get_text()
+                        interior = item.find("ul", {"class": "reset reset--all"}).find_all("li")[2].get_text()                        
 
                         title = title.replace('\n', "")
                         title = title.replace('Brand New', "")
+                        colour_options = title.split("(")[1]
+                        colour = colour_options.split(")")[0]
+                        if "with" in colour_options:
+                                options = colour_options.split("with ")[1]
+                        else:
+                                options = ""
+                        colour = colour_options.split(")")[0]
+                        title = title.split("(")[0]
                         if price is not None:
                                 price = price.get_text()
                                 price = price.replace(",","")
                         if vin is not None:
                                 vin = vin.get_text()
 
-                        print_to_txt(dealer_name, price, title, transmission, engine, interior, vin)
-                        print_to_csv(dealer_name, price, title, transmission, engine, interior, vin)
+                        print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
+                        print_to_csv(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
 
 
         print("Finished Dealer: " + dealer_name)
