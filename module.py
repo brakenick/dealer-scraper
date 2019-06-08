@@ -2,28 +2,10 @@ import requests
 import urllib.request
 import time
 import csv
+from helpers import print_to_txt
+from helpers import print_to_csv
+from helpers import init_csv
 from bs4 import BeautifulSoup
-
-def print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin):
-        file.write(dealer_name + " " + str(price) + str(title) + "Colour: " + str(colour) + " Options:  " + str(options) + "Transmission:" + str(transmission) + " Engine:" + str(engine) + "Interior: " + str(interior) + " " + str(vin) + "\n")   
-
-def print_to_csv(dealer_name, price, title, colour, options, transmission, engine, interior, vin):
-                
-        r = [dealer_name, price, title, colour, options, transmission, engine, interior, vin]        
-        row = ",".join(r)
-
-        with open("cars.csv", "a") as file:
-                file.write(row)
-                file.write("\n")
-
-def init_csv():
-        f = open("cars.csv", "w")
-        f.truncate()
-        f.write("dealer_name, price, title, colour, options, transmission, engine, interior, vin")
-        f.write("\n")
-        f.close()
-
-file = open("cars.txt", "w")
 
 init_csv()
 
@@ -87,6 +69,7 @@ while i < len(dealers):
                                 price = price.replace(",","")
                         if vin is not None:
                                 vin = vin.get_text()
+                                vin = vin.replace("VIN: ","")
 
                         print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
                         print_to_csv(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
