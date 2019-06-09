@@ -21,7 +21,6 @@ def import_dealers():
             for model in models:
                 dealers.append(stripped + model + "/diesel/")            
 
-print(dealers)
 init_csv()
 import_dealers()
 
@@ -71,9 +70,11 @@ while i < len(dealers):
                         if vin is not None:
                                 vin = vin.get_text()
                                 vin = vin.replace("VIN: ","")
+                        
+                        link = "https://" + dealer_name + ".dealer.toyota.com.au/inventory/prado/" + model + "/diesel/" + title[1:5] + "/" + vin
 
-                        print_to_txt(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin)
-                        print_to_csv(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin)                        
+                        print_to_txt(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin, link)
+                        print_to_csv(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin, link)                        
         
         results_list = []
         
