@@ -1,0 +1,340 @@
+<div class="ty-find-a-dealer__results">
+                
+<div class="ty-find-a-dealer-results" data-ng-class="{
+         'is-empty': findADealer.showEmpty,
+         'is-onboarding': findADealer.showOnboarding
+     }" infinite-scroll="findADealer.displayMoreItems()" infinite-scroll-disabled="findADealer.allItemsDisplayed" infinite-scroll-distance="1" style="">
+    <div class="container">
+        <div class="ty-tooltip-callout ng-isolate-scope ng-hide" data-ng-show="ctl.isOpen" tooltip-callout-id="tooltip-callout-five-star-guest-experience-dealership"><span class="ty-tooltip-callout__internal-origin"></span><span class="ty-tooltip-callout__nub-fill"></span><span class="ty-tooltip-callout__nub-border-and-shadow"></span><div class="ty-tooltip-callout__box"><!-- ngIf: !ctl.isMouseDetected --><div class="ty-tooltip-callout__content">
+            <p class="ng-scope">This award recognises those Toyota Dealerships who have a proven record in consistently delivering an outstanding guest experience. They embrace a guest-first philosophy, ensuring expectations are exceeded at every opportunity.</p>
+        </div></div></div>
+        <div class="ty-tooltip-callout ng-isolate-scope ng-hide" data-ng-show="ctl.isOpen" tooltip-callout-id="tooltip-callout-toyota-fleet-specialist"><span class="ty-tooltip-callout__internal-origin"></span><span class="ty-tooltip-callout__nub-fill"></span><span class="ty-tooltip-callout__nub-border-and-shadow"></span><div class="ty-tooltip-callout__box"><!-- ngIf: !ctl.isMouseDetected --><div class="ty-tooltip-callout__content">
+            <p class="ng-scope">Toyota Fleet offers a complete range of services and finance packaged cars, along with a comprehensive range of vehicles - everything you need to help keep your business on the road.</p>
+        </div></div></div>
+        <div class="row ng-hide" data-ng-show="findADealer.showOnboarding" style="">
+            <div class="col-xs-12">
+                <div class="ty-find-a-dealer-results-onboarding">
+                    <svg class="ty-svg-icon ty-svg-icon__alert-info ty-svg-icon--replace-fill" width="64" height="64" viewBox="0 0 64 64" data-ng-class="{ 'ty-svg-icon--replace-fill': replaceFill, 'ty-svg-icon--replace-stroke': replaceStroke }"><path d="M32,64A32,32,0,1,1,64,32,32,32,0,0,1,32,64ZM32,2.016A29.984,29.984,0,1,0,61.984,32,29.984,29.984,0,0,0,32,2.016ZM31.634,24.7a2.316,2.316,0,0,1-1.7-.71,2.415,2.415,0,1,1,3.415-3.415,2.316,2.316,0,0,1,.71,1.7A2.423,2.423,0,0,1,31.634,24.7Zm1.852,21.66H30.16V30.895H28.05V28.178h5.436V46.362Z"></path></svg>
+                    <p class="ty-find-a-dealer-results-onboarding__text">Select a state or enter a location above to view dealers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- ngRepeat: dealer in findADealer.dealersDisplayed --><div class="col-xs-12 col-sm-6 col-lg-4 ty-find-a-dealer-results__cell ng-scope" data-ng-repeat="dealer in findADealer.dealersDisplayed" data-ty-post-repeat="" data-ng-animate-children="" data-repeat-id="findadealer.results" style="">
+                <article class="ty-find-a-dealer-result">
+                    <div class="ty-find-a-dealer-result__headers">
+                        <div class="ty-find-a-dealer-result__header-text">
+                            <h4 class="ty-find-a-dealer-result__name ng-binding">ALICE SPRINGS</h4>
+                            <p class="ty-find-a-dealer-result__label ty-sparse-text ng-binding">Peter Kittle Toyota</p>
+                        </div>
+                        <!-- ngIf: dealer.serviceImages.expressmaintenance --><img class="ty-find-a-dealer-result__header-image ng-scope" src="/-/media/main-site/find-a-dealer/espress-maintainance-find-a-dealer-260917.png" data-ng-if="dealer.serviceImages.expressmaintenance" style=""><!-- end ngIf: dealer.serviceImages.expressmaintenance -->
+                    </div>
+                    <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    <div class="ty-find-a-dealer-result__rows ty-find-a-dealer-result__rows--fluid-height">
+                        <div class="ty-find-a-dealer-result__row">
+                            <address>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Peter%20Kittle%20Toyota%2C%2046%20Stuart%20Highway%2C%20ALICE%20SPRINGS%20NT%2C%200870" target="_blank" class="ty-find-a-dealer-result__address ng-binding">
+                                        46 Stuart Highway,<br>
+                                        ALICE SPRINGS NT, 0870
+                                    </a>
+                                </p>
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row" data-ng-class="{ 'is-empty': !dealer.telephone &amp;&amp; !dealer.webSite}">
+                            <address>
+                                <!-- ngIf: dealer.telephone || dealer.webSite --><p data-ng-if="dealer.telephone || dealer.webSite" class="ng-scope" style="">
+                                    <!-- ngIf: dealer.telephone --><a class="ty-find-a-dealer-result__phone ng-binding ng-scope" href="tel://0889554200" data-ng-if="dealer.telephone" style="">Ph: 08 8955 4200<br></a><!-- end ngIf: dealer.telephone -->
+                                    <!-- ngIf: dealer.webSite --><a class="ty-find-a-dealer-result__website ng-binding ng-scope" href="http://alicesprings.peterkittletoyota.com.au/" target="_blank" data-ng-if="dealer.webSite" style="">http://alicesprings.peterkittletoyota.com.au/</a><!-- end ngIf: dealer.webSite -->
+                                </p><!-- end ngIf: dealer.telephone || dealer.webSite -->
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--fluid-height ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.serviceImages.fivestardealer &amp;&amp; !dealer.serviceImages.fleetspecialistdealer}">
+                            <div class="ty-find-a-dealer-result__service-badges">
+                                <!-- ngIf: dealer.serviceImages.fivestardealer -->
+                                <!-- ngIf: dealer.serviceImages.fleetspecialistdealer --><div class="ty-find-a-dealer-result__service-badge ng-scope" data-ng-if="dealer.serviceImages.fleetspecialistdealer" style="">
+                                    <img class="ty-find-a-dealer-result__service-badge-image" src="/-/media/main-site/find-a-dealer/btn_toyotafleetspecialist.png">
+                                    <span class="ty-find-a-dealer-result__service-badge-info"><span class="ty-tooltip-icon ng-isolate-scope"><span id="ty-tooltip-callout-origin-a0151fc7-ceea-4a78-8b85-9385800eec34" class="ty-tooltip-icon__callout-origin"><ng-transclude></ng-transclude></span><a href="#tooltip-callout-toyota-fleet-specialist" data-ty-tooltip-callout-origin-selector="#ty-tooltip-callout-origin-a0151fc7-ceea-4a78-8b85-9385800eec34"><svg class="ty-svg-icon ty-svg-icon__tooltip ty-svg-icon--replace-fill" width="12" height="12" viewBox="0 0 12 12" data-ng-class="{ 'ty-svg-icon--replace-fill': replaceFill, 'ty-svg-icon--replace-stroke': replaceStroke }" style=""><path d="M5.4,4.2 L6.6,4.2 L6.6,3 L5.4,3 L5.4,4.2 Z M6,10.8 C3.354,10.8 1.2,8.646 1.2,6 C1.2,3.354 3.354,1.2 6,1.2 C8.646,1.2 10.8,3.354 10.8,6 C10.8,8.646 8.646,10.8 6,10.8 L6,10.8 Z M6,0 C2.688,0 0,2.688 0,6 C0,9.312 2.688,12 6,12 C9.312,12 12,9.312 12,6 C12,2.688 9.312,0 6,0 L6,0 Z M5.4,9 L6.6,9 L6.6,5.4 L5.4,5.4 L5.4,9 Z"></path></svg></a></span></span>
+                                </div><!-- end ngIf: dealer.serviceImages.fleetspecialistdealer -->
+                            </div>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.services }">
+                            <!-- ngIf: dealer.services --><p class="ty-find-a-dealer-result__services ty-sparse-text ng-binding ng-scope" data-ng-if="dealer.services" style="">Service, Parts, Used, New, Express Maintenance</p><!-- end ngIf: dealer.services -->
+                        </div>
+                    </div>
+
+<svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>                        <div class="ty-cta-stack">
+                                <a class="ty-cta -optional" href="https://www.toyota.com.au/contact-a-dealer" data-ng-click="findADealerController.track('CONTACT DEALER', dealer.dealerCode)">CONTACT DEALER</a>
+                                                    </div>
+
+                        <!-- ngIf: dealer.serviceWebsite --><div data-ng-if="dealer.serviceWebsite" class="ng-scope" style="">
+                            <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                            <div class="ty-cta-stack">
+                                <!-- ngIf: dealer.serviceWebsite --><a class="ty-cta -optional ng-scope" ng-href="http://alicesprings.peterkittletoyota.com.au/enquiries/service-booking/" target="_blank" data-ng-if="dealer.serviceWebsite" href="http://alicesprings.peterkittletoyota.com.au/enquiries/service-booking/" style="">Book a service</a><!-- end ngIf: dealer.serviceWebsite -->
+                            </div>
+                        </div><!-- end ngIf: dealer.serviceWebsite -->
+                    <div class="visible-sm visible-md visible-lg">
+                        <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    </div>
+                </article>
+            </div><!-- end ngRepeat: dealer in findADealer.dealersDisplayed --><div class="col-xs-12 col-sm-6 col-lg-4 ty-find-a-dealer-results__cell ng-scope" data-ng-repeat="dealer in findADealer.dealersDisplayed" data-ty-post-repeat="" data-ng-animate-children="" data-repeat-id="findadealer.results" style="">
+                <article class="ty-find-a-dealer-result">
+                    <div class="ty-find-a-dealer-result__headers">
+                        <div class="ty-find-a-dealer-result__header-text">
+                            <h4 class="ty-find-a-dealer-result__name ng-binding">DARWIN</h4>
+                            <p class="ty-find-a-dealer-result__label ty-sparse-text ng-binding">Bridge Toyota</p>
+                        </div>
+                        <!-- ngIf: dealer.serviceImages.expressmaintenance --><img class="ty-find-a-dealer-result__header-image ng-scope" src="/-/media/main-site/find-a-dealer/espress-maintainance-find-a-dealer-260917.png" data-ng-if="dealer.serviceImages.expressmaintenance" style=""><!-- end ngIf: dealer.serviceImages.expressmaintenance -->
+                    </div>
+                    <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    <div class="ty-find-a-dealer-result__rows ty-find-a-dealer-result__rows--fluid-height">
+                        <div class="ty-find-a-dealer-result__row">
+                            <address>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Bridge%20Toyota%2C%201-11%20Stuart%20Highway%2C%20DARWIN%20NT%2C%200800" target="_blank" class="ty-find-a-dealer-result__address ng-binding">
+                                        1-11 Stuart Highway,<br>
+                                        DARWIN NT, 0800
+                                    </a>
+                                </p>
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row" data-ng-class="{ 'is-empty': !dealer.telephone &amp;&amp; !dealer.webSite}">
+                            <address>
+                                <!-- ngIf: dealer.telephone || dealer.webSite --><p data-ng-if="dealer.telephone || dealer.webSite" class="ng-scope" style="">
+                                    <!-- ngIf: dealer.telephone --><a class="ty-find-a-dealer-result__phone ng-binding ng-scope" href="tel://0889460000" data-ng-if="dealer.telephone" style="">Ph: 08 8946 0000<br></a><!-- end ngIf: dealer.telephone -->
+                                    <!-- ngIf: dealer.webSite --><a class="ty-find-a-dealer-result__website ng-binding ng-scope" href="http://bridgetoyota.com.au/" target="_blank" data-ng-if="dealer.webSite" style="">http://bridgetoyota.com.au/</a><!-- end ngIf: dealer.webSite -->
+                                </p><!-- end ngIf: dealer.telephone || dealer.webSite -->
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--fluid-height ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.serviceImages.fivestardealer &amp;&amp; !dealer.serviceImages.fleetspecialistdealer}">
+                            <div class="ty-find-a-dealer-result__service-badges">
+                                <!-- ngIf: dealer.serviceImages.fivestardealer -->
+                                <!-- ngIf: dealer.serviceImages.fleetspecialistdealer --><div class="ty-find-a-dealer-result__service-badge ng-scope" data-ng-if="dealer.serviceImages.fleetspecialistdealer" style="">
+                                    <img class="ty-find-a-dealer-result__service-badge-image" src="/-/media/main-site/find-a-dealer/btn_toyotafleetspecialist.png">
+                                    <span class="ty-find-a-dealer-result__service-badge-info"><span class="ty-tooltip-icon ng-isolate-scope"><span id="ty-tooltip-callout-origin-bd6418e1-7d4e-4ff5-b67d-52b31d8c460d" class="ty-tooltip-icon__callout-origin"><ng-transclude></ng-transclude></span><a href="#tooltip-callout-toyota-fleet-specialist" data-ty-tooltip-callout-origin-selector="#ty-tooltip-callout-origin-bd6418e1-7d4e-4ff5-b67d-52b31d8c460d"><svg class="ty-svg-icon ty-svg-icon__tooltip ty-svg-icon--replace-fill" width="12" height="12" viewBox="0 0 12 12" data-ng-class="{ 'ty-svg-icon--replace-fill': replaceFill, 'ty-svg-icon--replace-stroke': replaceStroke }" style=""><path d="M5.4,4.2 L6.6,4.2 L6.6,3 L5.4,3 L5.4,4.2 Z M6,10.8 C3.354,10.8 1.2,8.646 1.2,6 C1.2,3.354 3.354,1.2 6,1.2 C8.646,1.2 10.8,3.354 10.8,6 C10.8,8.646 8.646,10.8 6,10.8 L6,10.8 Z M6,0 C2.688,0 0,2.688 0,6 C0,9.312 2.688,12 6,12 C9.312,12 12,9.312 12,6 C12,2.688 9.312,0 6,0 L6,0 Z M5.4,9 L6.6,9 L6.6,5.4 L5.4,5.4 L5.4,9 Z"></path></svg></a></span></span>
+                                </div><!-- end ngIf: dealer.serviceImages.fleetspecialistdealer -->
+                            </div>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.services }">
+                            <!-- ngIf: dealer.services --><p class="ty-find-a-dealer-result__services ty-sparse-text ng-binding ng-scope" data-ng-if="dealer.services" style="">Fleet, Used, Parts, Service, New, Express Maintenance</p><!-- end ngIf: dealer.services -->
+                        </div>
+                    </div>
+
+<svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>                        <div class="ty-cta-stack">
+                                <a class="ty-cta -optional" href="https://www.toyota.com.au/contact-a-dealer" data-ng-click="findADealerController.track('CONTACT DEALER', dealer.dealerCode)">CONTACT DEALER</a>
+                                                    </div>
+
+                        <!-- ngIf: dealer.serviceWebsite --><div data-ng-if="dealer.serviceWebsite" class="ng-scope" style="">
+                            <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                            <div class="ty-cta-stack">
+                                <!-- ngIf: dealer.serviceWebsite --><a class="ty-cta -optional ng-scope" ng-href="http://www.bridgetoyota.com.au/service/" target="_blank" data-ng-if="dealer.serviceWebsite" href="http://www.bridgetoyota.com.au/service/" style="">Book a service</a><!-- end ngIf: dealer.serviceWebsite -->
+                            </div>
+                        </div><!-- end ngIf: dealer.serviceWebsite -->
+                    <div class="visible-sm visible-md visible-lg">
+                        <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    </div>
+                </article>
+            </div><!-- end ngRepeat: dealer in findADealer.dealersDisplayed --><div class="col-xs-12 col-sm-6 col-lg-4 ty-find-a-dealer-results__cell ng-scope" data-ng-repeat="dealer in findADealer.dealersDisplayed" data-ty-post-repeat="" data-ng-animate-children="" data-repeat-id="findadealer.results" style="">
+                <article class="ty-find-a-dealer-result">
+                    <div class="ty-find-a-dealer-result__headers">
+                        <div class="ty-find-a-dealer-result__header-text">
+                            <h4 class="ty-find-a-dealer-result__name ng-binding">KATHERINE</h4>
+                            <p class="ty-find-a-dealer-result__label ty-sparse-text ng-binding">Katherine Toyota</p>
+                        </div>
+                        <!-- ngIf: dealer.serviceImages.expressmaintenance -->
+                    </div>
+                    <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    <div class="ty-find-a-dealer-result__rows ty-find-a-dealer-result__rows--fluid-height">
+                        <div class="ty-find-a-dealer-result__row">
+                            <address>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Katherine%20Toyota%2C%20441%20Victoria%20Highway%2C%20KATHERINE%20NT%2C%20850" target="_blank" class="ty-find-a-dealer-result__address ng-binding">
+                                        441 Victoria Highway,<br>
+                                        KATHERINE NT, 850
+                                    </a>
+                                </p>
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row" data-ng-class="{ 'is-empty': !dealer.telephone &amp;&amp; !dealer.webSite}">
+                            <address>
+                                <!-- ngIf: dealer.telephone || dealer.webSite --><p data-ng-if="dealer.telephone || dealer.webSite" class="ng-scope" style="">
+                                    <!-- ngIf: dealer.telephone --><a class="ty-find-a-dealer-result__phone ng-binding ng-scope" href="tel://0889740000" data-ng-if="dealer.telephone" style="">Ph: 08 8974 0000<br></a><!-- end ngIf: dealer.telephone -->
+                                    <!-- ngIf: dealer.webSite --><a class="ty-find-a-dealer-result__website ng-binding ng-scope" href="http://www.katherinetoyota.com.au" target="_blank" data-ng-if="dealer.webSite" style="">http://www.katherinetoyota.com.au</a><!-- end ngIf: dealer.webSite -->
+                                </p><!-- end ngIf: dealer.telephone || dealer.webSite -->
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--fluid-height ty-find-a-dealer-result__row--padding-top-more is-empty" data-ng-class="{ 'is-empty': !dealer.serviceImages.fivestardealer &amp;&amp; !dealer.serviceImages.fleetspecialistdealer}" style="">
+                            <div class="ty-find-a-dealer-result__service-badges">
+                                <!-- ngIf: dealer.serviceImages.fivestardealer -->
+                                <!-- ngIf: dealer.serviceImages.fleetspecialistdealer -->
+                            </div>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.services }">
+                            <!-- ngIf: dealer.services --><p class="ty-find-a-dealer-result__services ty-sparse-text ng-binding ng-scope" data-ng-if="dealer.services" style="">Parts, Service, Used, New</p><!-- end ngIf: dealer.services -->
+                        </div>
+                    </div>
+
+<svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>                        <div class="ty-cta-stack">
+                                <a class="ty-cta -optional" href="https://www.toyota.com.au/contact-a-dealer" data-ng-click="findADealerController.track('CONTACT DEALER', dealer.dealerCode)">CONTACT DEALER</a>
+                                                    </div>
+
+                        <!-- ngIf: dealer.serviceWebsite --><div data-ng-if="dealer.serviceWebsite" class="ng-scope" style="">
+                            <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                            <div class="ty-cta-stack">
+                                <!-- ngIf: dealer.serviceWebsite --><a class="ty-cta -optional ng-scope" ng-href="https://www.katherinetoyota.com.au/service/katherine-kununurra-toyota-service/" target="_blank" data-ng-if="dealer.serviceWebsite" href="https://www.katherinetoyota.com.au/service/katherine-kununurra-toyota-service/" style="">Book a service</a><!-- end ngIf: dealer.serviceWebsite -->
+                            </div>
+                        </div><!-- end ngIf: dealer.serviceWebsite -->
+                    <div class="visible-sm visible-md visible-lg">
+                        <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    </div>
+                </article>
+            </div><!-- end ngRepeat: dealer in findADealer.dealersDisplayed --><div class="col-xs-12 col-sm-6 col-lg-4 ty-find-a-dealer-results__cell ng-scope" data-ng-repeat="dealer in findADealer.dealersDisplayed" data-ty-post-repeat="" data-ng-animate-children="" data-repeat-id="findadealer.results" style="">
+                <article class="ty-find-a-dealer-result">
+                    <div class="ty-find-a-dealer-result__headers">
+                        <div class="ty-find-a-dealer-result__header-text">
+                            <h4 class="ty-find-a-dealer-result__name ng-binding">NHULUNBUY</h4>
+                            <p class="ty-find-a-dealer-result__label ty-sparse-text ng-binding">Gove Toyota</p>
+                        </div>
+                        <!-- ngIf: dealer.serviceImages.expressmaintenance -->
+                    </div>
+                    <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    <div class="ty-find-a-dealer-result__rows ty-find-a-dealer-result__rows--fluid-height">
+                        <div class="ty-find-a-dealer-result__row">
+                            <address>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Gove%20Toyota%2C%20Arnhem%20Road%2C%20NHULUNBUY%20NT%2C%20880" target="_blank" class="ty-find-a-dealer-result__address ng-binding">
+                                        Arnhem Road,<br>
+                                        NHULUNBUY NT, 880
+                                    </a>
+                                </p>
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row" data-ng-class="{ 'is-empty': !dealer.telephone &amp;&amp; !dealer.webSite}">
+                            <address>
+                                <!-- ngIf: dealer.telephone || dealer.webSite --><p data-ng-if="dealer.telephone || dealer.webSite" class="ng-scope" style="">
+                                    <!-- ngIf: dealer.telephone --><a class="ty-find-a-dealer-result__phone ng-binding ng-scope" href="tel://0889871911" data-ng-if="dealer.telephone" style="">Ph: 08 8987 1911<br></a><!-- end ngIf: dealer.telephone -->
+                                    <!-- ngIf: dealer.webSite --><a class="ty-find-a-dealer-result__website ng-binding ng-scope" href="http://www.govetoyota.com.au/" target="_blank" data-ng-if="dealer.webSite" style="">http://www.govetoyota.com.au/</a><!-- end ngIf: dealer.webSite -->
+                                </p><!-- end ngIf: dealer.telephone || dealer.webSite -->
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--fluid-height ty-find-a-dealer-result__row--padding-top-more is-empty" data-ng-class="{ 'is-empty': !dealer.serviceImages.fivestardealer &amp;&amp; !dealer.serviceImages.fleetspecialistdealer}" style="">
+                            <div class="ty-find-a-dealer-result__service-badges">
+                                <!-- ngIf: dealer.serviceImages.fivestardealer -->
+                                <!-- ngIf: dealer.serviceImages.fleetspecialistdealer -->
+                            </div>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.services }">
+                            <!-- ngIf: dealer.services --><p class="ty-find-a-dealer-result__services ty-sparse-text ng-binding ng-scope" data-ng-if="dealer.services" style="">Service, Parts, Used, Fleet, New</p><!-- end ngIf: dealer.services -->
+                        </div>
+                    </div>
+
+<svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>                        <div class="ty-cta-stack">
+                                <a class="ty-cta -optional" href="https://www.toyota.com.au/contact-a-dealer" data-ng-click="findADealerController.track('CONTACT DEALER', dealer.dealerCode)">CONTACT DEALER</a>
+                                                    </div>
+
+                        <!-- ngIf: dealer.serviceWebsite -->
+                    <div class="visible-sm visible-md visible-lg">
+                        <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    </div>
+                </article>
+            </div><!-- end ngRepeat: dealer in findADealer.dealersDisplayed --><div class="col-xs-12 col-sm-6 col-lg-4 ty-find-a-dealer-results__cell ng-scope" data-ng-repeat="dealer in findADealer.dealersDisplayed" data-ty-post-repeat="" data-ng-animate-children="" data-repeat-id="findadealer.results" style="">
+                <article class="ty-find-a-dealer-result">
+                    <div class="ty-find-a-dealer-result__headers">
+                        <div class="ty-find-a-dealer-result__header-text">
+                            <h4 class="ty-find-a-dealer-result__name ng-binding">PALMERSTON</h4>
+                            <p class="ty-find-a-dealer-result__label ty-sparse-text ng-binding">Bridge Toyota</p>
+                        </div>
+                        <!-- ngIf: dealer.serviceImages.expressmaintenance --><img class="ty-find-a-dealer-result__header-image ng-scope" src="/-/media/main-site/find-a-dealer/espress-maintainance-find-a-dealer-260917.png" data-ng-if="dealer.serviceImages.expressmaintenance" style=""><!-- end ngIf: dealer.serviceImages.expressmaintenance -->
+                    </div>
+                    <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    <div class="ty-find-a-dealer-result__rows ty-find-a-dealer-result__rows--fluid-height">
+                        <div class="ty-find-a-dealer-result__row">
+                            <address>
+                                <p>
+                                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Bridge%20Toyota%2C%2079%20Chung%20Wah%20Terrace%2C%20PALMERSTON%20NT%2C%20830" target="_blank" class="ty-find-a-dealer-result__address ng-binding">
+                                        79 Chung Wah Terrace,<br>
+                                        PALMERSTON NT, 830
+                                    </a>
+                                </p>
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row" data-ng-class="{ 'is-empty': !dealer.telephone &amp;&amp; !dealer.webSite}">
+                            <address>
+                                <!-- ngIf: dealer.telephone || dealer.webSite --><p data-ng-if="dealer.telephone || dealer.webSite" class="ng-scope" style="">
+                                    <!-- ngIf: dealer.telephone --><a class="ty-find-a-dealer-result__phone ng-binding ng-scope" href="tel://0889351000" data-ng-if="dealer.telephone" style="">Ph: 08 8935 1000<br></a><!-- end ngIf: dealer.telephone -->
+                                    <!-- ngIf: dealer.webSite --><a class="ty-find-a-dealer-result__website ng-binding ng-scope" href="http://bridgetoyota.com.au/" target="_blank" data-ng-if="dealer.webSite" style="">http://bridgetoyota.com.au/</a><!-- end ngIf: dealer.webSite -->
+                                </p><!-- end ngIf: dealer.telephone || dealer.webSite -->
+                            </address>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--fluid-height ty-find-a-dealer-result__row--padding-top-more is-empty" data-ng-class="{ 'is-empty': !dealer.serviceImages.fivestardealer &amp;&amp; !dealer.serviceImages.fleetspecialistdealer}" style="">
+                            <div class="ty-find-a-dealer-result__service-badges">
+                                <!-- ngIf: dealer.serviceImages.fivestardealer -->
+                                <!-- ngIf: dealer.serviceImages.fleetspecialistdealer -->
+                            </div>
+                        </div>
+                        <div class="ty-find-a-dealer-result__row ty-find-a-dealer-result__row--padding-top-more" data-ng-class="{ 'is-empty': !dealer.services }">
+                            <!-- ngIf: dealer.services --><p class="ty-find-a-dealer-result__services ty-sparse-text ng-binding ng-scope" data-ng-if="dealer.services" style="">Fleet, Parts, Service, Used, New, Express Maintenance</p><!-- end ngIf: dealer.services -->
+                        </div>
+                    </div>
+
+<svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>                        <div class="ty-cta-stack">
+                                <a class="ty-cta -optional" href="https://www.toyota.com.au/contact-a-dealer" data-ng-click="findADealerController.track('CONTACT DEALER', dealer.dealerCode)">CONTACT DEALER</a>
+                                                    </div>
+
+                        <!-- ngIf: dealer.serviceWebsite --><div data-ng-if="dealer.serviceWebsite" class="ng-scope" style="">
+                            <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                            <div class="ty-cta-stack">
+                                <!-- ngIf: dealer.serviceWebsite --><a class="ty-cta -optional ng-scope" ng-href="http://www.bridgetoyota.com.au/service/" target="_blank" data-ng-if="dealer.serviceWebsite" href="http://www.bridgetoyota.com.au/service/" style="">Book a service</a><!-- end ngIf: dealer.serviceWebsite -->
+                            </div>
+                        </div><!-- end ngIf: dealer.serviceWebsite -->
+                    <div class="visible-sm visible-md visible-lg">
+                        <svg class="ty-find-a-dealer-result__divider" width="172px" height="2px" viewBox="0 0 172 2">
+    <line x1="0" x2="172" y1="1" y2="1"></line>
+</svg>
+                    </div>
+                </article>
+            </div><!-- end ngRepeat: dealer in findADealer.dealersDisplayed -->
+        </div>
+    </div>
+    <div class="ty-find-a-dealer-results__spinner-container ng-hide" data-ng-show="findADealer.loadingDealers || !findADealer.allItemsDisplayed" style="">
+        <svg class="ty-svg-icon ty-svg-icon--block ty-loading-spinner" data-ng-class="{'ty-loading-spinner--bright': bright}" width="52px" height="52px" viewBox="0 0 52 52"><g stroke="none" fill-rule="evenodd"><path class="ty-loading-spinner__path" d="M52,26 C52,27.104 50.8352,28 49.4,28 L41.6,28 C40.1648,28 39,27.104 39,26 C39,24.896 40.1648,24 41.6,24 L49.4,24 C50.8352,24 52,24.896 52,26 Z"></path><path class="ty-loading-spinner__path" d="M13,26 C13,27.104 11.8352,28 10.4,28 L2.6,28 C1.1648,28 0,27.104 0,26 C0,24.896 1.1648,24 2.6,24 L10.4,24 C11.8352,24 13,24.896 13,26 Z"></path><g transform="translate(26, 26) rotate(-90) translate(-26, -26) translate(0, 24)"><path class="ty-loading-spinner__path" d="M52,2 C52,3.104 50.8352,4 49.4,4 L41.6,4 C40.1648,4 39,3.104 39,2 C39,0.896 40.1648,0 41.6,0 L49.4,0 C50.8352,0 52,0.896 52,2 Z"></path><path class="ty-loading-spinner__path" d="M13,2 C13,3.104 11.8352,4 10.4,4 L2.6,4 C1.1648,4 0,3.104 0,2 C0,0.896 1.1648,0 2.6,0 L10.4,0 C11.8352,0 13,0.896 13,2 Z"></path></g><g transform="translate(26, 26) rotate(-135) translate(-26, -26) translate(0, 24)"><path class="ty-loading-spinner__path" d="M52,2 C52,3.104 50.8352,4 49.4,4 L41.6,4 C40.1648,4 39,3.104 39,2 C39,0.896 40.1648,0 41.6,0 L49.4,0 C50.8352,0 52,0.896 52,2 Z"></path><path class="ty-loading-spinner__path" d="M13,2 C13,3.104 11.8352,4 10.4,4 L2.6,4 C1.1648,4 0,3.104 0,2 C0,0.896 1.1648,0 2.6,0 L10.4,0 C11.8352,0 13,0.896 13,2 Z"></path></g><g transform="translate(26, 26) rotate(-225) translate(-26, -26) translate(0, 24)"><path class="ty-loading-spinner__path" d="M52,2 C52,3.104 50.8352,4 49.4,4 L41.6,4 C40.1648,4 39,3.104 39,2 C39,0.896 40.1648,0 41.6,0 L49.4,0 C50.8352,0 52,0.896 52,2 Z"></path><path class="ty-loading-spinner__path ty-loading-spinner__path--accent" d="M13,2 C13,3.104 11.8352,4 10.4,4 L2.6,4 C1.1648,4 0,3.104 0,2 C0,0.896 1.1648,0 2.6,0 L10.4,0 C11.8352,0 13,0.896 13,2 Z"></path></g></g></svg>
+    </div>
+</div>
+
+            </div>
