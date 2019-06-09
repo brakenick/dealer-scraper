@@ -8,13 +8,20 @@ from bs4 import BeautifulSoup
 
 results_list = []
 dealers = []
+models = ["gx", "gxl", "vx", "kakadu"]
 
+
+# import dealers from txt file
 def import_dealers():
     with open('dealers.txt') as dealer_file:
         for line in dealer_file:
             stripped = line.replace("\n","")
-            dealers.append(stripped) 
+                 
+            # add dealer URLs for each model to be scraped
+            for model in models:
+                dealers.append(stripped + model + "/diesel/")            
 
+print(dealers)
 init_csv()
 import_dealers()
 
@@ -23,8 +30,9 @@ while i < len(dealers):
         dealer_name = dealers[i].split(".")
         dealer_name = dealers[i].replace("https://", "")
         dealer_name = dealer_name.split(".")[0]
+        model = dealers[i].split("/")[5]
 
-        print("Started dealer: " + dealer_name)
+        print("Started dealer: " + dealer_name + " " + model)
         url = dealers[i]  
 
         response = requests.get(url)
@@ -64,11 +72,13 @@ while i < len(dealers):
                                 vin = vin.get_text()
                                 vin = vin.replace("VIN: ","")
 
-                        print_to_txt(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
-                        print_to_csv(dealer_name, price, title, colour, options, transmission, engine, interior, vin)
+                        print_to_txt(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin)
+                        print_to_csv(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin)                        
+        
+        results_list = []
+        
+        print("Finished dealer: " + dealer_name + " " + model)
 
-
-        print("Finished Dealer: " + dealer_name)
         i = i + 1
 
 print("finished all dealers")
