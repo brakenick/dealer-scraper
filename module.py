@@ -10,7 +10,6 @@ results_list = []
 dealers = []
 models = ["gx", "gxl", "vx", "kakadu"]
 
-
 # import dealers from txt file
 def import_dealers():
     with open('dealers.txt') as dealer_file:

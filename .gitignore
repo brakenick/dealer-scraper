@@ -2,3 +2,6 @@ cars.csv
 cars.txt
 __pycache__
 test.py
+all-dealers.txt
+dealer_names.txt
+dealer_contact/*

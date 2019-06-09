@@ -1,3 +1,2 @@
 ## Todo
-* Add model
-* add links
+* check for ssl expiry and exclude from scrape
