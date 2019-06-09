@@ -2,8 +2,8 @@
 This code scrapes the prices of in stock Toyota cars off dealer websites
 
 ## How to use
-# run `dealers.py`
-# run `module.py`
+1. run `dealers.py`
+2. run `module.py`
 
 Output files are cars.csv and cars.txt
 
