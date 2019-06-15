@@ -5,14 +5,15 @@ from helpers import print_to_txt
 from helpers import print_to_csv
 from helpers import init_csv
 from dealers import load_dealers
+from dealers import write_dealers
 from dealers import remove_dealers
 from dealers import dealer_state
 from bs4 import BeautifulSoup
 
-results_list = []
 dealer_list = load_dealers()
+
 dealers = []
-models = ["gx", "gxl", "vx", "kakadu"]
+models = ["gx", "gxl", "vx", "sahara"]
 
 # import dealers from txt file
 def import_dealers():
@@ -25,6 +26,9 @@ def import_dealers():
                 dealers.append(stripped + model + "/diesel/")         
 
 def scrape_cars():
+
+        results_list = []
+        
         i = 0
         while i < len(dealers):
                 dealer_name = dealers[i].split(".")
@@ -46,10 +50,11 @@ def scrape_cars():
                 # iterate over results list to extract fields for each car
                 for item in results_list:
                         stock = item.find("div", {"class": "inventory--stock--status--inner"})
+                        price = item.find("div", {"class": "inventory--price--figure"})
                         
-                        if stock is not None:
+                        if stock is not None and price is not None:
                                 title = item.find("div", {"class": "inventory--overview"}).findChildren()[0].get_text()
-                                price = item.find("div", {"class": "inventory--price--figure"})
+                                
                                 vin = item.find("p", {"class": "inventory--detail__vin"})                       
                                 transmission = item.find("ul", {"class": "reset reset--all"}).find_all("li")[0].get_text()
                                 engine = item.find("ul", {"class": "reset reset--all"}).find_all("li")[1].get_text()
@@ -73,7 +78,8 @@ def scrape_cars():
                                         vin = vin.replace("VIN: ","")
                                 
                                 link = "https://" + dealer_name + ".dealer.toyota.com.au/inventory/prado/" + model + "/diesel/" + title[1:5] + "/" + vin
-                                state = dealer_state[dealer_name]
+
+                                state = dealer_state.get(dealer_name)
 
                                 print_to_txt(dealer_name, state, price, model, title, colour, options, transmission, engine, interior, vin, link)
                                 print_to_csv(dealer_name, state, price, model, title, colour, options, transmission, engine, interior, vin, link)                        
@@ -86,6 +92,8 @@ def scrape_cars():
 
         print("finished all dealers")
 
-#init_csv()
-#import_dealers()
-#print(dealer_state)
+write_dealers(dealer_list)
+
+init_csv()
+import_dealers()
+scrape_cars()

@@ -67,6 +67,8 @@ def remove_dealers(d):
         r.append("billbuckletoyota")
         r.append("lemanstoyota")
         r.append("billbuckle")
+        r.append("oldmactoyota")
+        r.append("newenglandtoyota")
 
         for i in dlist:
                 if i in r:
@@ -77,3 +79,10 @@ def remove_dealers(d):
 
         return d
 
+def write_dealers(dealer_list):
+        d = dealer_list
+
+        f = open("dealers.txt", "w")
+
+        for i in d: 
+                f.write("https://" + str(i) + ".dealer.toyota.com.au/new-vehicles/prado/" + "\n") 
