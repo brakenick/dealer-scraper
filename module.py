@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 dealer_list = load_dealers()
 
 dealers = []
-models = ["gx", "gxl", "vx", "sahara"]
+models = ["gx", "gxl", "vx", "kakadu"]
 
 # import dealers from txt file
 def import_dealers():
