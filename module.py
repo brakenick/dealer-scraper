@@ -4,9 +4,13 @@ import csv
 from helpers import print_to_txt
 from helpers import print_to_csv
 from helpers import init_csv
+from dealers import load_dealers
+from dealers import remove_dealers
+from dealers import dealer_state
 from bs4 import BeautifulSoup
 
 results_list = []
+dealer_list = load_dealers()
 dealers = []
 models = ["gx", "gxl", "vx", "kakadu"]
 
@@ -18,67 +22,70 @@ def import_dealers():
                  
             # add dealer URLs for each model to be scraped
             for model in models:
-                dealers.append(stripped + model + "/diesel/")            
+                dealers.append(stripped + model + "/diesel/")         
 
-init_csv()
-import_dealers()
+def scrape_cars():
+        i = 0
+        while i < len(dealers):
+                dealer_name = dealers[i].split(".")
+                dealer_name = dealers[i].replace("https://", "")
+                dealer_name = dealer_name.split(".")[0]
+                model = dealers[i].split("/")[5]
 
-i = 0
-while i < len(dealers):
-        dealer_name = dealers[i].split(".")
-        dealer_name = dealers[i].replace("https://", "")
-        dealer_name = dealer_name.split(".")[0]
-        model = dealers[i].split("/")[5]
+                print("Started dealer: " + dealer_name + " " + model)
+                url = dealers[i]  
 
-        print("Started dealer: " + dealer_name + " " + model)
-        url = dealers[i]  
+                response = requests.get(url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                results = soup.find("ul", {"id": "results"})
 
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        results = soup.find("ul", {"id": "results"})
+                # add div for each car to array
+                for item in results.find_all("li", {"class": "inventory"}):
+                        results_list.append(item)        
 
-        # add div for each car to array
-        for item in results.find_all("li", {"class": "inventory"}):
-                results_list.append(item)        
-
-        # iterate over results list to extract fields for each car
-        for item in results_list:
-                stock = item.find("div", {"class": "inventory--stock--status--inner"})
-                
-                if stock is not None:
-                        title = item.find("div", {"class": "inventory--overview"}).findChildren()[0].get_text()
-                        price = item.find("div", {"class": "inventory--price--figure"})
-                        vin = item.find("p", {"class": "inventory--detail__vin"})                       
-                        transmission = item.find("ul", {"class": "reset reset--all"}).find_all("li")[0].get_text()
-                        engine = item.find("ul", {"class": "reset reset--all"}).find_all("li")[1].get_text()
-                        interior = item.find("ul", {"class": "reset reset--all"}).find_all("li")[2].get_text()                        
-
-                        title = title.replace('\n', "")
-                        title = title.replace('Brand New', "")
-                        colour_options = title.split("(")[1]
-                        colour = colour_options.split(")")[0]
-                        if "with" in colour_options:
-                                options = colour_options.split("with ")[1]
-                        else:
-                                options = ""
-                        colour = colour_options.split(")")[0]
-                        title = title.split("(")[0]
-                        if price is not None:
-                                price = price.get_text()
-                                price = price.replace(",","")
-                        if vin is not None:
-                                vin = vin.get_text()
-                                vin = vin.replace("VIN: ","")
+                # iterate over results list to extract fields for each car
+                for item in results_list:
+                        stock = item.find("div", {"class": "inventory--stock--status--inner"})
                         
-                        link = "https://" + dealer_name + ".dealer.toyota.com.au/inventory/prado/" + model + "/diesel/" + title[1:5] + "/" + vin
+                        if stock is not None:
+                                title = item.find("div", {"class": "inventory--overview"}).findChildren()[0].get_text()
+                                price = item.find("div", {"class": "inventory--price--figure"})
+                                vin = item.find("p", {"class": "inventory--detail__vin"})                       
+                                transmission = item.find("ul", {"class": "reset reset--all"}).find_all("li")[0].get_text()
+                                engine = item.find("ul", {"class": "reset reset--all"}).find_all("li")[1].get_text()
+                                interior = item.find("ul", {"class": "reset reset--all"}).find_all("li")[2].get_text()                        
 
-                        print_to_txt(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin, link)
-                        print_to_csv(dealer_name, price, model, title, colour, options, transmission, engine, interior, vin, link)                        
-        
-        results_list = []
-        
-        print("Finished dealer: " + dealer_name + " " + model)
+                                title = title.replace('\n', "")
+                                title = title.replace('Brand New', "")
+                                colour_options = title.split("(")[1]
+                                colour = colour_options.split(")")[0]
+                                if "with" in colour_options:
+                                        options = colour_options.split("with ")[1]
+                                else:
+                                        options = ""
+                                colour = colour_options.split(")")[0]
+                                title = title.split("(")[0]
+                                if price is not None:
+                                        price = price.get_text()
+                                        price = price.replace(",","")
+                                if vin is not None:
+                                        vin = vin.get_text()
+                                        vin = vin.replace("VIN: ","")
+                                
+                                link = "https://" + dealer_name + ".dealer.toyota.com.au/inventory/prado/" + model + "/diesel/" + title[1:5] + "/" + vin
+                                state = dealer_state[dealer_name]
 
-        i = i + 1
+                                print_to_txt(dealer_name, state, price, model, title, colour, options, transmission, engine, interior, vin, link)
+                                print_to_csv(dealer_name, state, price, model, title, colour, options, transmission, engine, interior, vin, link)                        
+                
+                results_list = []
+                
+                print("Finished dealer: " + dealer_name + " " + model)
 
-print("finished all dealers")
+                i = i + 1
+
+        print("finished all dealers")
+
+#init_csv()
+#import_dealers()
+#print(dealer_state)

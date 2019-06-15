@@ -4,3 +4,5 @@ __pycache__
 test.py
 all-dealers.txt
 dealer_names.txt
+dealers_temp.txt
+
